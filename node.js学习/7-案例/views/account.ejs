@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .account {
+        width: 600px;
+        text-align: center;
+        margin: 0 auto;
+    }
+    .box {
+        width: 600px;
+        border: 1px solid #cac8c8;
+        border-radius: 10px;
+        padding: 10px;
+        text-align: left;
+        margin: 5px 0;
+    }
+    .content {
+        display: flex;
+        justify-content: space-between;
+    }
+    .timer {
+        height: 40px;
+        line-height: 40px;
+    }
+    a {
+        float: right;
+    }
+</style>
+<body>
+    <div class="account">
+        <h3>记账本</h3>
+        <% for(let i=0;i<list.length;i++){ %>
+            <div class="box">
+                <div class="timer"><%= list[i].timer %></div>
+                <div class="content">
+                    <div style="width: 50%;"><%= list[i].matter %></div>
+                    <div><%= list[i].type %></div>
+                    <div><%= list[i].amount %></div>
+                </div>
+                <div>
+                    <%= list[i].remark %>
+                    <a href="/account/delete?id=<%= list[i].id %>">删除</a>
+                </div>
+            </div>
+        <%}%>
+    </div>
+</body>
+</html>

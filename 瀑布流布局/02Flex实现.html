@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .img {
+        background-color: pink;
+        margin-bottom: 30px;
+    }
+
+    .box {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .column {
+        width: calc(33.3% - 10px);
+    }
+</style>
+<body>
+    <div class="box">
+        <div class="column">
+            <div class="img" style="height: 20vw;"></div>
+            <div class="img" style="height: 50vw;"></div>
+            <div class="img" style="height: 40vw;"></div>
+        </div>
+        <div class="column">
+            <div class="img" style="height: 25vw;"></div>
+            <div class="img" style="height: 41vw;"></div>
+            <div class="img" style="height: 61vw;"></div>
+        </div>
+        <div class="column">
+            <div class="img" style="height: 33vw;"></div>
+            <div class="img" style="height: 35vw;"></div>
+            <div class="img" style="height: 36vw;"></div>
+        </div>
+    </div>
+</body>
+</html>

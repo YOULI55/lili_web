@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .create {
+            text-align: center;
+            margin: 0 auto;
+            width: 500px;
+        }
+        .form {
+            border: 1px solid #cac8c8;
+            border-radius: 10px;
+            padding: 10px 0;
+        }
+        input {
+            width: 80%;
+            height: 40px;
+            margin: 10px 0;
+        }
+        button {
+            width: 160px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="create">
+        <h3>添加记录</h3>
+        <form class="form" method="post" action="http://localhost:3000/account/create" >
+            <span>事项：</span><input type="text" name="matter"><br>
+            <span>时间：</span><input type="text" name="timer"><br>
+            <span>类型：</span><input type="text" name="type"><br>
+            <span>金额：</span><input type="text" name="amount"><br>
+            <span>备注：</span><input type="text" name="remark"><br>
+            <button>添加</button>
+        </form>
+    </div>
+</body>
+</html>
