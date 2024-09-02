@@ -4,7 +4,7 @@ module.exports = {
     mode: 'none',
     entry: './src/main.js',  // 指定入口文件路径
     output: {
-        filename: 'bundle.js',  // 指定输出文件路径
+        filename: '[name].[hash].bundle.js',  // 指定文件名为 打包后的文件名 + hash值 +bundle.js
         path: path.join(__dirname, 'output'),  // 指定输出文件目录
         publicPath: 'output'  // 指定输出文件的公共路径
     },
