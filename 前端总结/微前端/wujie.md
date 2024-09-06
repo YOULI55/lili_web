@@ -5,4 +5,4 @@
 
 
 通讯
-web component
+基于web component 自定义事件通讯

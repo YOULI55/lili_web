@@ -9,4 +9,5 @@
 
 
 通讯
-globalState 
+globalState
+当数据发送改变时，通知观察者
