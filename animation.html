@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        height: 50px;
+        width: 50px;
+        background-color: rgb(134, 168, 213);
+        
+    }
+
+    div:hover {
+        animation: colorChange 2s infinite;
+    }
+
+    @keyframes colorChange {
+        /* from {
+            width: 60px;
+            height: 60px
+        }
+        to {
+            width: 100px;
+            height: 100px
+        } */
+        0% {
+            width: 60px;
+            height: 60px
+        }
+        100% {
+            width: 100px;
+            height: 100px
+        }
+    }
+</style>
+<body>
+    <div></div>
+</body>
+</html>
