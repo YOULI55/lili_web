@@ -4,6 +4,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { HotModuleReplacementPlugin } = require('webpack');
 
+// 原理：
+// 1. 先从入口文件出发，找到所有依赖的模块
+// 2. 把这些模块整合起来生成一个抽象语法树ast
+// 3. 运行代码，标记没有被用的代码
+// 4. 删除无用代码
+
 module.exports = {
     // mode生产模式下tree-shaking会自动开启，打包后删除无用代码
     // mode: 'production', 

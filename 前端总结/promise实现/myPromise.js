@@ -1,5 +1,3 @@
-const { type } = require("os");
-
 class myPromise {
 	constructor(fn) {
 		this.promiseStatus = 'pending';
