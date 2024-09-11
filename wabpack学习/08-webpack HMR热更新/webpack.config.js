@@ -4,6 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { HotModuleReplacementPlugin } = require('webpack');
 
+// 热更新的原理：
+// 1.监听文件变化
+// 2.重新编译打包
+// 3.通过websocket通知浏览器端
 module.exports = {
     mode: 'none',
     entry: './src/main.js',  // 指定入口文件路径

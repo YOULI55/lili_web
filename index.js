@@ -1,43 +1,23 @@
-class MyPromise {
-    constructor(executor){
-      this.status = 'pending'
-      this.value = undefined
-      this.reason = undefined
-      this.onResolvedCallBacks = []
-      this.onRejectedCallbacks = []
-      const resolve = (value) => {
-      if (this.status === 'pending') {
-           this,status = 'fulfilled'
-           this.value = value
-           this.onResolvedCallBacks.forEach(fn => fn())
-  
-         }
-      }
-       const reject = (reason) => {
-          if (this.status === 'pending') {
-           this,status = 'rejected'
-           this.reason = reason
-           this.onRejectedCallBacks.forEach(fn => fn())
-          }
-      }
-  
-      try{
-     // 执行用户传入的执行器函数，并传入 resolve 和 reject 函数
-        executor(resolve, reject)
-      }catch(err){
-        reject(err)
-      }
-    }
-    then(onFulfilled, onRejected){
-      if(this.status === 'fulfilled'){
-        onFulfilled(this.value)
-      }
-       if(this.status === 'rejected'){
-        onRejected(this.reason)
-      }
-       if(this.status === 'pending'){
-        this.onResolvedCallBacks.push(()=> onFulfilled(this.value))
-        this.onRejectedCallBacks.push(()=> onRejected(this.reason))
-      }
-    }
-  }
+// 现给定一个整数的 多维数组 ，请你返回一个生成器对象，按照 中序遍历 的顺序逐个生成整数。
+// 多维数组 是一个递归数据结构，包含整数和其他 多维数组。
+// 中序遍历 是从左到右遍历每个数组，在遇到任何整数时生成它，遇到任何数组时递归应用 中序遍历 。
+// 示例 1：
+// 输入：arr = [[[6]],[1,3],[]]
+// 输出：[6,1,3]
+// 解释：
+// const generator = inorderTraversal(arr);
+// generator.next().value; // 6
+// generator.next().value; // 1
+// generator.next().value; // 3
+// generator.next().done; // true
+// 示例 2：
+// 输入：arr = []
+// 输出：[]
+// 解释：输入的多维数组没有任何参数，所以生成器不需要生成任何值。
+ 
+
+// 提示：
+
+// 0 <= arr.flat().length <= 105
+// 0 <= arr.flat()[i] <= 105
+// maxNestingDepth <= 105
