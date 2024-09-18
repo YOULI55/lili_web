@@ -72,17 +72,6 @@ export interface Subscriber extends DebuggerOptions {
   notify(): void
 }
 
-/**
- * Represents a link between a source (Dep) and a subscriber (Effect or Computed).
- * Deps and subs have a many-to-many relationship - each link between a
- * dep and a sub is represented by a Link instance.
- *
- * A Link is also a node in two doubly-linked lists - one for the associated
- * sub to track all its deps, and one for the associated dep to track all its
- * subs.
- *
- * @internal
- */
 export interface Link {
   dep: Dep
   sub: Subscriber
@@ -112,25 +101,14 @@ const pausedQueueEffects = new WeakSet<ReactiveEffect>()
 export class ReactiveEffect<T = any>
   implements Subscriber, ReactiveEffectOptions
 {
-  /**
-   * @internal
-   */
   deps?: Link = undefined
-  /**
-   * @internal
-   */
+
   depsTail?: Link = undefined
-  /**
-   * @internal
-   */
+
   flags: EffectFlags = EffectFlags.ACTIVE | EffectFlags.TRACKING
-  /**
-   * @internal
-   */
+
   nextEffect?: ReactiveEffect = undefined
-  /**
-   * @internal
-   */
+
   cleanup?: () => void = undefined
 
   scheduler?: EffectScheduler = undefined
