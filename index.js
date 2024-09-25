@@ -1,50 +1,28 @@
-// const mySetInterval = (fn,delay) => { 
-//     let timer = null;
-// 	const interval = () => {
-// 		fn();
-// 		timer = setTimeout(() => {
-// 			interval();
-// 		},delay)
-// 	}
-//     interval();
-// 	return () => {
-// 		clearTimeout(timer);
-// 	}
-// }
+const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        console.log(444)
+    })
+    resolve(111);
+    console.log(222);
+})
+promise.then((res) => {
+    console.log(res);
+})
 
-// const clear1 = mySetInterval(() => {
-// 	console.log(111)
-// },1000)
+console.log(333);
 
-// setTimeout(() => {
-//     clear1();
-// }, 5000);
+setTimeout(() => {
+    console.log(555);
+    new Promise((resolve, reject) => {
+        console.log(666);
+        resolve(777);
+    }).then((res) => {
+        console.log(res);
+    })
+});
 
-// const clear2 = mySetInterval(() => {
-// 	console.log(222)
-// },1000)
+setTimeout(() => {
+    console.log(888);
+});
 
-// setTimeout(() => {
-//     clear2();
-// }, 10000);
-
-
-const mySetTimeout = (fn, delay) => {
-    let timer = null;
-    const timeout = () => {
-        timer = setInterval(() => {
-            fn();
-            clearInterval(timer);
-        }, delay)
-    }
-    timeout();
-}
-
-mySetTimeout(() => {
-    console.log('hello')
-}, 1000)
-
-mySetTimeout(() => {
-    console.log('hello')
-}, 2000)
-console.log('end')
+// 222 333 111 444 555 666 777 888
