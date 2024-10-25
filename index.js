@@ -17,4 +17,4 @@
             }
             cur.splice(l,0,5)
             console.log(l,r,cur)
-            
+            // 1,3,4,5,6,7
