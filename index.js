@@ -1,28 +1,20 @@
-const promise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        console.log(444)
-    })
-    resolve(111);
-    console.log(222);
-})
-promise.then((res) => {
-    console.log(res);
-})
-
-console.log(333);
-
-setTimeout(() => {
-    console.log(555);
-    new Promise((resolve, reject) => {
-        console.log(666);
-        resolve(777);
-    }).then((res) => {
-        console.log(res);
-    })
-});
-
-setTimeout(() => {
-    console.log(888);
-});
-
-// 222 333 111 444 555 666 777 888
+// 1,3,4,6,7
+            // 5
+            const cur = [1,3,4,5,6,7];
+            
+            let l = 0, r = cur.length - 1;
+            while(l < r) {
+                const mid = Math.floor((l + r) / 2);
+                if(cur[mid] > 5) {
+                    r = mid;
+                }
+                if(cur[mid] < 5) {
+                    l = mid + 1;
+                }
+                if(cur[mid] === 5) {
+                    r = mid; 
+                }
+            }
+            cur.splice(l,0,5)
+            console.log(l,r,cur)
+            
