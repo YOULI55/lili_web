@@ -45,5 +45,41 @@
     },
 
 4. tree-shaking 过滤掉无用代码
+    tree-shaking 原理
+    {
+        1.将源代码解析成抽象语法树
+        2.遍历抽象语法树，标记每个节点的引用关系
+        3.基于标记结果，移除没有引用的代码
+    }
+    需要注意的是,commonJS是动态引入，tree-shaking无法识别，只能识别ES6 Moudle 引入
     
 5. 打包的文件命名配置 hash 值
+    有context-hash,chunk-hash,hash三种  
+    {
+        hash是整个项目的hash值，不适用于缓存
+        chunkHash是每个块的hash值，适用于分块打包的项目
+        contextHash是每个文件的hash值，适用于精准控制缓存的项目
+    }
+
+6. 分块打包
+	optimization: {
+		// 代码分割配置
+		splitChunks: {
+			chunks: 'all', // 分割的代码类型
+			cacheGroups: {
+				// 第三方模块
+				vendors: {
+					name: 'vendors', // 名称
+					test: /[\\/]node_modules[\\/]/, // 匹配规则
+					priority: 10 // 优先级
+				},
+				// 公共模块
+				common: {
+					name: 'common', // 名称
+					minSize: 1024, // 最小大小
+					minChunks: 2, // 最小引用次数
+					priority: 5 // 优先级
+				}
+			}
+		}
+	}
