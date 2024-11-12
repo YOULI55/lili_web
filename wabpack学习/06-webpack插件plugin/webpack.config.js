@@ -19,7 +19,7 @@ class MyPlugin {
                         source: () => withoutComments,
                         size: () => withoutComments.length
                     }
-                }
+                }·
             }
         })
     }
