@@ -14,6 +14,12 @@ const flatArr = (arr) => {
 flatArr(arr);
 console.log(res);
 
+// function flatArr(arr) { 
+//     return arr.reduce((prev, cur) => { 
+//         return prev.concat(Array.isArray(cur) ? flatArr(cur) : cur); 
+//     }, []); 
+// }
+
 // 广度优先
 // const queue = [arr];
 // const res = [];

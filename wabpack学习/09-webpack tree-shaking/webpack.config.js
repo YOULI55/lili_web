@@ -7,7 +7,7 @@ const { HotModuleReplacementPlugin } = require('webpack');
 // 原理：
 // 1. 先从入口文件出发，找到所有依赖的模块
 // 2. 把这些模块整合起来生成一个抽象语法树ast
-// 3. 运行代码，标记没有被用的代码
+// 3. 递归遍历ast，标记每个模块的依赖关系
 // 4. 删除无用代码
 
 module.exports = {
