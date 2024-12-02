@@ -1,4 +1,4 @@
-1. thread-loader 多线程打包
+1. thread-loader 多线程处理loader
     module.exports = {
     // ...
     module: {
@@ -7,7 +7,8 @@
             test: /\.js$/,
             use: [
             'thread-loader',
-            // 其他loader配置，比如babel-loader
+            // 其他loader配置
+            // thread-loader 会开启多个线程同时处理 babel-loader 的编译
             'babel-loader',
             ],
             exclude: /node_modules/,
