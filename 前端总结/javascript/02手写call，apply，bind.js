@@ -1,9 +1,9 @@
 // 1.实现call
 Function.prototype.myCall = function(context,...args) {
     context = context || window;
-    const fn = Symbol();
-    context[fn] = this;
-    const result = context[fn](...args);
+    const key = Symbol();
+    context[key] = this;
+    const result = context[key](...args);
     delete context[fn];
     return result;
 }
@@ -11,9 +11,9 @@ Function.prototype.myCall = function(context,...args) {
 // 2.实现bind
 Function.prototype.myApply = function(context,args) {
     context = context || window;
-    const fn = Symbol();
-    context[fn] = this;
-    const result = context[fn](...args);
+    const key = Symbol();
+    context[key] = this;
+    const result = context[key](...args);
     delete context[fn];
     return result;
 }

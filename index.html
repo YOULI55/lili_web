@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,128 +7,44 @@
 </head>
 
 <style>
-    body {
-        background: black;
-        overflow: hidden;
-        margin: 0;
+    div {
+        --width-half: calc(50vw - 10px);
+        width: var(--width-half);
+        height: calc(var(--width-half) / 2);
+        background-color: pink;
     }
 </style>
-
 <body>
-    <div>
-        <canvas id="canvasfire"></canvas>
-    </div>
+    <div></div>
 </body>
 
 <script>
-    window.addEventListener("DOMContentLoaded", onLoad, false);
-    window.requestAnimationFrame =
-        window.requestAnimationFrame ||
-        window.webkitRequestAnimationFrame ||
-        window.mozRequestAnimationFrame ||
-        window.oRequestAnimationFrame ||
-        window.msRequestAnimationFrame ||
-        function (callback) {
-            window.setTimeout(callback, 1000 / 60);
-        };
-    var canvasfire, ctx, w, h, particles = [], probability = 0.04,
-        xPoint, yPoint;
-    function onLoad() {
-        canvasfire = document.getElementById("canvasfire");
-        ctx = canvasfire.getContext("2d");
-        resizeCanvas();
-        window.requestAnimationFrame(updateWorld);
+    let element = document.querySelector('div');
+    let start = 10;
+    const duration = 2000; // 动画周期，单位毫秒
+    // const element = document.getElementById('myElement'); // 假设你有一个元素ID为'myElement'
+    function animate(time) {
+    // if (time - start > duration) {
+    //     start = time; // 重置开始时间
+    // }
+
+    // // 计算动画进度
+    // const progress = (time - start) / duration;
+    // const x = Math.cos(progress * Math.PI * 2) * 100; // 假设动画是水平移动
+
+    // // 更新元素位置
+    // element.style.transform = `translateX(${x}px)`;
+    // let width = Math.random() * 100;
+    element.style.setProperty('--width-half', `calc(${start}vw - 10px)`);
+    start += 1;
+    if(start > 100) {
+        start = 10;
+    }
+    // 请求下一帧动画
+    requestAnimationFrame(animate);
     }
 
-    function resizeCanvas() {
-        if (!!canvasfire) {
-            w = canvasfire.width = window.innerWidth;
-            h = canvasfire.height = window.innerHeight;
-        }
-    }
-
-    function updateWorld() {
-        update();
-        paint();
-        window.requestAnimationFrame(updateWorld);
-    }
-
-    function update() {
-        if (particles.length < 500 && Math.random() < probability) {
-            createFirework();
-        }
-        var alive = [];
-        for (var i = 0; i < particles.length; i++) {
-            if (particles[i].move()) {
-                alive.push(particles[i]);
-            }
-        }
-        particles = alive;
-    }
-
-    function paint() {
-        ctx.globalCompositeOperation = 'source-over';
-        ctx.fillStyle = "rgba(0,0,0,0.2)";
-        ctx.fillRect(0, 0, w, h);
-        ctx.globalCompositeOperation = 'lighter';
-        for (var i = 0; i < particles.length; i++) {
-            particles[i].draw(ctx);
-        }
-    }
-
-    function createFirework() {
-        xPoint = Math.random() * (w - 200) + 100;
-        yPoint = Math.random() * (h - 200) + 100;
-        var nFire = Math.random() * 50 + 100;
-        var c = "rgb(" + (~~(Math.random() * 200 + 55)) + ","
-            + (~~(Math.random() * 200 + 55)) + "," + (~~(Math.random() * 200 + 55)) + ")";
-        for (var i = 0; i < nFire; i++) {
-            var particle = new Particle();
-            particle.color = c;
-            var vy = Math.sqrt(25 - particle.vx * particle.vx);
-            if (Math.abs(particle.vy) > vy) {
-                particle.vy = particle.vy > 0 ? vy : -vy;
-            }
-            particles.push(particle);
-        }
-    }
-
-    function Particle() {
-        this.w = this.h = Math.random() * 4 + 1;
-        this.x = xPoint - this.w / 2;
-        this.y = yPoint - this.h / 2;
-        this.vx = (Math.random() - 0.5) * 10;
-        this.vy = (Math.random() - 0.5) * 10;
-        this.alpha = Math.random() * .5 + .5;
-        this.color;
-    }
-
-    Particle.prototype = {
-        gravity: 0.05,
-        move: function () {
-            this.x += this.vx;
-            this.vy += this.gravity;
-            this.y += this.vy;
-            this.alpha -= 0.01;
-            if (this.x <= -this.w || this.x >= screen.width ||
-                this.y >= screen.height ||
-                this.alpha <= 0) {
-                return false;
-            }
-            return true;
-        },
-        draw: function (c) {
-            c.save();
-            c.beginPath();
-            c.translate(this.x + this.w / 2, this.y + this.h / 2);
-            c.arc(0, 0, this.w, 0, Math.PI * 2);
-            c.fillStyle = this.color;
-            c.globalAlpha = this.alpha;
-            c.closePath();
-            c.fill();
-            c.restore();
-        }
-    } 
+    // 启动动画
+    requestAnimationFrame(animate);
 </script>
-
 </html>
